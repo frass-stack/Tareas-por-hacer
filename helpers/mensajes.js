@@ -15,7 +15,7 @@ const mostrarMenu = ()=>{
     console.log(`${'0.'.green} Salir \n`)
 
     //Preparamos la interfaz que se le presentara al usuario.
-    const readLine = require('readLine').createInterface({
+    const readLine = require('readline').createInterface({
         //Pausamos para recibir la entrada del usuario.
         input: process.stdin,
         //Pausamos para emitir la respuesta al usuario.
@@ -29,7 +29,7 @@ const mostrarMenu = ()=>{
 
 const pausa = ()=> {
     //Preparamos la interfaz que se le presentara al usuario.
-    const readLine = require('readLine').createInterface({
+    const readLine = require('readline').createInterface({
         //Pausamos para recibir la entrada del usuario.
         input: process.stdin,
         //Pausamos para emitir la respuesta al usuario.
@@ -42,5 +42,6 @@ const pausa = ()=> {
 }
 
 module.exports = {
-    mostrarMenu
+    mostrarMenu,
+    pausa
 }
