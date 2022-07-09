@@ -13,6 +13,14 @@ const mostrarMenu = ()=>{
     console.log(`${'5.'.green} Completar tarea(s)`)
     console.log(`${'6.'.green} Borrar tarea`)
     console.log(`${'0.'.green} Salir \n`)
+
+    //Preparamos la interfaz que se le presentara al usuario.
+    const readLine = require('readLine').createInterface({
+        //Pausamos para recibir la entrada del usuario.
+        input: process.stdin,
+        //Pausamos para emitir la respuesta al usuario.
+        output: process.stdout
+    })
 }
 
 module.exports = {
