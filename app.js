@@ -1,7 +1,6 @@
 require('colors');
 const { inquirerMenu, inquirerPausa } = require('./helpers/inquirer');
-
-
+const Tarea = require('./models/tarea');
 
 
 const main = async () => {
