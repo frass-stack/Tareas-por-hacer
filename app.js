@@ -1,4 +1,5 @@
 require('colors');
+const { guardarArchivo } = require('./helpers/guardarArchivo');
 const { inquirerMenu, inquirerPausa, leerInput } = require('./helpers/inquirer');
 const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
@@ -22,6 +23,9 @@ const main = async () => {
                 console.log(tareas.listadoArr);
                 break;
         }
+
+        //Impactamos los datos de la informacion.
+        // guardarArchivo(tareas.listadoArr);
         
         console.log('\n')
         if(opcion !== '0') await inquirerPausa();
