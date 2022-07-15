@@ -1,5 +1,5 @@
 require('colors');
-const { guardarArchivo } = require('./helpers/guardarArchivo');
+const { guardarArchivo, leerDB } = require('./helpers/guardarArchivo');
 const { inquirerMenu, inquirerPausa, leerInput } = require('./helpers/inquirer');
 const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
@@ -9,6 +9,12 @@ const main = async () => {
 
     let opcion = '';
     const tareas = new Tareas();
+    const tareasDB = leerDB();
+
+    //Cargamos tareas en caso de haber previamente.
+    if(tareasDB){
+        tareas.cargarTareasFromArray(tareasDB);
+    }
 
     do {
         //Imprime el menu
@@ -25,10 +31,10 @@ const main = async () => {
         }
 
         //Impactamos los datos de la informacion.
-        // guardarArchivo(tareas.listadoArr);
+        guardarArchivo(tareas.listadoArr);
         
         console.log('\n')
-        if(opcion !== '0') await inquirerPausa();
+        await inquirerPausa();
         
     } while (opcion !== '0');
 }
