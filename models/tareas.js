@@ -33,6 +33,15 @@ class Tareas {
         const tarea = new Tarea(descripcion);
         this._listado[tarea.id] = tarea;
     }
+
+    listadoCompleto = () => {
+        this.listadoArr.forEach((tarea, i) => {
+            const idx = `${i + 1}`.green;
+            const { descripcion, completadoEn } = tarea;
+            const estado = ( completadoEn )? 'Completada'.green:'Pendiente'.red;
+            console.log(`${idx} ${descripcion} :: ${estado}`);
+        })
+    }
 }
 
 module.exports = Tareas;
