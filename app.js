@@ -26,7 +26,13 @@ const main = async () => {
                 tareas.crearTarea(descripcion);
                 break;
             case '2':
-                tareas.listadoCompleto()
+                tareas.listadoCompleto();
+                break;
+            case '3':
+                tareas.listarCompletadasOPendientes(true);
+                break;
+            case '4':
+                tareas.listarCompletadasOPendientes(false);
                 break;
         }
 
