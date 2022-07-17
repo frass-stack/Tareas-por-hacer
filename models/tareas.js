@@ -21,6 +21,10 @@ class Tareas {
         this._listado = {};
     }
 
+    borrarTarea = ( id = '' ) => {
+        if(this._listado[id]) delete this._listado['id'];
+    }
+
     cargarTareasFromArray(tareas = []){
         if(tareas.length !== 0){
             tareas.forEach(tarea => {
