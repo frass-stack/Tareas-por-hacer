@@ -124,7 +124,7 @@ const confirmar = async (message) => {
 const mostrarMultipleSeleccion = async ( tareas = [] ) => {
 
     const choices = tareas.map((tarea, i) => {
-        const idx = `${1 + 1}.`.green;
+        const idx = `${1 + i}.`.green;
         return {
             value: tarea.id,
             name: `${idx} ${tarea.descripcion}`,
