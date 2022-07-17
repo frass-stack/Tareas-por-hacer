@@ -1,6 +1,10 @@
 require('colors');
 const { guardarArchivo, leerDB } = require('./helpers/guardarArchivo');
-const { inquirerMenu, inquirerPausa, leerInput, listadoTareasBorrar } = require('./helpers/inquirer');
+const { inquirerMenu,
+    inquirerPausa,
+    leerInput,
+    listadoTareasBorrar,
+    confirmar } = require('./helpers/inquirer');
 const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
 
@@ -12,7 +16,7 @@ const main = async () => {
     const tareasDB = leerDB();
 
     //Cargamos tareas en caso de haber previamente.
-    if(tareasDB){
+    if (tareasDB) {
         tareas.cargarTareasFromArray(tareasDB);
     }
 
@@ -36,16 +40,22 @@ const main = async () => {
                 break;
             case '6':
                 const id = await listadoTareasBorrar(tareas.listadoArr);
-                console.log(id);
+                if (id !== '0') {
+                    const confirmacion = await confirmar('¿Esta seguro que desea borrar la tarea?')
+                    if (confirmacion) {
+                        tareas.borrarTarea(id);
+                        console.log('Tarea borrada exitosamente.');
+                    }
+                }
                 break;
         }
 
         //Impactamos los datos de la informacion.
         guardarArchivo(tareas.listadoArr);
-        
+
         console.log('\n')
         await inquirerPausa();
-        
+
     } while (opcion !== '0');
 }
 
